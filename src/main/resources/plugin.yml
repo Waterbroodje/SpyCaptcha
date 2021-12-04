@@ -1,0 +1,10 @@
+name: SpyCaptcha
+version: '${project.version}'
+main: me.waterbroodje.captcha.Main
+api-version: 1.16
+authors: [ Waterbroodje ]
+description: A captcha plugin for server administrators that want to keep their server safe.
+permissions:
+  spycaptcha.bypass:
+    description: the bypass permison.
+    default: op
