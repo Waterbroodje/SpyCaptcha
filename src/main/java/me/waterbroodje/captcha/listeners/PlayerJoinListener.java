@@ -13,26 +13,28 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.Random;
 
-public class PlayerConnectEvent implements Listener {
+public class PlayerJoinListener implements Listener {
 
     @EventHandler
     public void onPlayerJoinEvent(PlayerJoinEvent e) {
         Player p = e.getPlayer();
 
         if (!Main.kicked.contains(p.getUniqueId()) && !p.hasPermission("spycaptcha.bypass")) {
-            Main.map.remove(p.getUniqueId());
-            Main.chances.put(p.getUniqueId(), 3);
-            InventoryManager inventory = new InventoryManager(p);
-            int random = new Random().nextInt(10);
-            inventory.setAmount((random < 5 ? random + 5 : random));
-            inventory.setDifficulty(Difficulties.NORMAL);
+            if (!Main.finished.contains(p.getUniqueId())) {
+                Main.map.remove(p.getUniqueId());
+                Main.chances.put(p.getUniqueId(), 3);
+                InventoryManager inventory = new InventoryManager(p);
+                int random = new Random().nextInt(10);
+                inventory.setAmount((random < 5 ? random + 5 : random));
+                inventory.setDifficulty(Difficulties.NORMAL);
 
-            new BukkitRunnable() {
-                @Override
-                public void run() {
-                    p.openInventory(inventory.build());
-                }
-            }.runTaskLater(Main.getInstance(), 20);
+                new BukkitRunnable() {
+                    @Override
+                    public void run() {
+                        p.openInventory(inventory.build());
+                    }
+                }.runTaskLater(Main.getInstance(), 20);
+            }
         }
     }
 

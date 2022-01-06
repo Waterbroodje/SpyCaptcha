@@ -17,7 +17,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.List;
 
-public class PlayerInventoryEvent implements Listener {
+public class PlayerInventoryListener implements Listener {
 
 
     @EventHandler
@@ -65,6 +65,7 @@ public class PlayerInventoryEvent implements Listener {
                     Main.map.remove(player.getUniqueId());
                     Main.booleans.remove(player.getUniqueId());
                     Main.chances.remove(player.getUniqueId());
+                    Main.finished.add(player.getUniqueId());
                     player.closeInventory();
 
                 }

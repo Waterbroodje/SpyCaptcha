@@ -1,7 +1,7 @@
 package me.waterbroodje.captcha;
 
-import me.waterbroodje.captcha.listeners.PlayerConnectEvent;
-import me.waterbroodje.captcha.listeners.PlayerInventoryEvent;
+import me.waterbroodje.captcha.listeners.PlayerJoinListener;
+import me.waterbroodje.captcha.listeners.PlayerInventoryListener;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -17,6 +17,7 @@ public final class Main extends JavaPlugin {
     public static HashMap<UUID, Integer> chances = new HashMap<>();
     public static List<UUID> kicked = new ArrayList<>();
     public static HashMap<UUID, Boolean> booleans = new HashMap<>();
+    public static List<UUID> finished = new ArrayList<>();
 
     public static Main getInstance() {
         return instance;
@@ -26,8 +27,8 @@ public final class Main extends JavaPlugin {
     public void onEnable() {
         instance = this;
 
-        Bukkit.getPluginManager().registerEvents(new PlayerConnectEvent(), this);
-        Bukkit.getPluginManager().registerEvents(new PlayerInventoryEvent(), this);
+        Bukkit.getPluginManager().registerEvents(new PlayerJoinListener(), this);
+        Bukkit.getPluginManager().registerEvents(new PlayerInventoryListener(), this);
         System.out.println("[SpyCaptcha] SpyCaptcha is succesfully installed.");
     }
 }
