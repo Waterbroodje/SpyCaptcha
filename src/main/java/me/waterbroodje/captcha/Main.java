@@ -26,7 +26,6 @@ public final class Main extends JavaPlugin {
     @Override
     public void onEnable() {
         instance = this;
-
         Bukkit.getPluginManager().registerEvents(new PlayerJoinListener(), this);
         Bukkit.getPluginManager().registerEvents(new PlayerInventoryListener(), this);
         System.out.println("[SpyCaptcha] SpyCaptcha is succesfully installed.");

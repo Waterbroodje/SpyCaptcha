@@ -39,7 +39,6 @@ public class InventoryManager {
     }
 
     public Inventory build() {
-
         int random = new Random().nextInt(2);
         switch (random) {
             case 0:
@@ -52,7 +51,6 @@ public class InventoryManager {
                 which = true;
                 break;
         }
-
         Inventory inventory = Bukkit.createInventory(player, 54, "Captcha");
 
         ItemStack nothing = new ItemStack(Material.PLAYER_HEAD, 1, (short) 1);
@@ -68,7 +66,6 @@ public class InventoryManager {
         cat.setItemMeta(catMeta);
 
         List<Long> list = new ArrayList<>();
-
         if (which) {
             for (int i = 0; i < inventory.getSize(); i++) {
                 inventory.setItem(i, nothing);
@@ -84,8 +81,6 @@ public class InventoryManager {
                 list.add((long) number);
                 inventory.setItem(number, cat);
             }
-
-
         } else {
             for (int i = 0; i < inventory.getSize(); i++) {
                 inventory.setItem(i, cat);

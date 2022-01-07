@@ -18,7 +18,6 @@ public class PlayerJoinListener implements Listener {
     @EventHandler
     public void onPlayerJoinEvent(PlayerJoinEvent e) {
         Player p = e.getPlayer();
-
         if (!Main.kicked.contains(p.getUniqueId()) && !p.hasPermission("spycaptcha.bypass")) {
             if (!Main.finished.contains(p.getUniqueId())) {
                 Main.map.remove(p.getUniqueId());
@@ -27,7 +26,6 @@ public class PlayerJoinListener implements Listener {
                 int random = new Random().nextInt(10);
                 inventory.setAmount((random < 5 ? random + 5 : random));
                 inventory.setDifficulty(Difficulties.NORMAL);
-
                 new BukkitRunnable() {
                     @Override
                     public void run() {
